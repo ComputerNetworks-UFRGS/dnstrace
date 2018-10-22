@@ -15,4 +15,7 @@ public interface VersionInfoRepository extends JpaRepository<VersionInfoEntity, 
 
     @Query("SELECT v FROM VersionInfoEntity v WHERE v.endDate = null")
     List<VersionInfoEntity> getRunningExecutions();
+
+    @Query("SELECT v FROM VersionInfoEntity v WHERE v.endDate is not null")
+    List<VersionInfoEntity> getFinishedExecutions();
 }

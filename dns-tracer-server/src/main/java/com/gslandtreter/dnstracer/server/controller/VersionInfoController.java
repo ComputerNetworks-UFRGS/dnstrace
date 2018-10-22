@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import java.sql.Timestamp;
+import java.util.List;
 
 @RestController
 @RequestMapping("/api")
@@ -54,6 +55,11 @@ public class VersionInfoController {
         statisticsRepository.onExecutionFinished(versionInfoEntity);
 
         return versionInfoEntity;
+    }
+
+    @GetMapping("/allAvailableRuns")
+    public List<VersionInfoEntity> getAllFinishedRuns() {
+        return versionInfoRepository.getFinishedExecutions();
     }
 
 }
