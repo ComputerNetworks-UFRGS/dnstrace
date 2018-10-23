@@ -3,6 +3,7 @@ import {Container, Row, Col} from 'reactstrap';
 import TopMenu from "../mainView/menu/TopMenu";
 import ManagedDropbox from "../misc/selectors/ManagedDropbox";
 import DropdownItemData from "../misc/bean/DropdownItemData";
+import ResultsTable from "../misc/tables/ResultsTable";
 
 class Results extends Component {
 
@@ -62,7 +63,7 @@ class Results extends Component {
 
     onTraceSelected(item) {
         this.setState(() => ({
-            selectedTrace: item
+            selectedTrace: item.value
         }));
     }
 
@@ -96,6 +97,15 @@ class Results extends Component {
                             </Col>
                         }
 
+                    </Row>
+                    <Row className='justify-content-center mt-3'>
+                        {this.state.selectedTrace &&
+                        <Col >
+                            <div className='text-center'>
+                                <ResultsTable displayItem={this.state.selectedTrace} />
+                            </div>
+                        </Col>
+                        }
                     </Row>
                 </Container>
             </div>
