@@ -124,6 +124,7 @@ public class RawSocket {
      * @return True if the socket is open.
      */
     public boolean isOpen() {
+        System.out.print(__socket);
         return (__socket > 0);
     }
 
@@ -201,8 +202,7 @@ public class RawSocket {
      *                    left unchanged.
      * @throws IOException If an I/O error occurs.
      */
-    public void
-    getSourceAddressForDestination(InetAddress destination, byte[] source)
+    public void getSourceAddressForDestination(InetAddress destination, byte[] source)
             throws IOException {
         if (__query_routing_interface(__socket, __family,
                 destination.getAddress(), source) < 0)
@@ -225,6 +225,8 @@ public class RawSocket {
         if (isOpen())
             throw new IllegalStateException();
         __socket = __socket(protocolFamily, protocol);
+
+
 
         if (__socket < 0) {
             __socket = __UNDEFINED;

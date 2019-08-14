@@ -29,6 +29,7 @@ import java.util.List;
 
 import static com.savarese.rocksaw.net.RawSocket.*;
 
+
 public class RawTraceRoute {
 
     private int receiveTimeout = 1000;
@@ -67,6 +68,7 @@ public class RawTraceRoute {
 
         this.protocolFamily = protocolFamily;
         this.protocol = protocol;
+
     }
 
     public RawTraceRoute(int id, int recvTimeoutMillis) throws IOException {
@@ -80,6 +82,7 @@ public class RawTraceRoute {
         srcAddress = new byte[4];
         requestType = ICMPPacket.TYPE_ECHO_REQUEST;
         replyType = ICMPPacket.TYPE_ECHO_REPLY;
+
     }
 
     private void computeSendChecksum(InetAddress host)

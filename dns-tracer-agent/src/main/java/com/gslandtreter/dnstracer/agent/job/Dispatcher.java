@@ -1,7 +1,7 @@
 package com.gslandtreter.dnstracer.agent.job;
 
-import com.gslandtreter.dnstracer.agent.rest.DnsTracerService;
-import com.gslandtreter.dnstracer.common.entity.VersionInfoEntity;import org.apache.logging.log4j.Logger;
+import com.gslandtreter.dnstracer.common.entity.VersionInfoEntity;
+import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.CommandLineRunner;
@@ -66,11 +66,10 @@ public class Dispatcher implements CommandLineRunner {
         getAlreadyProcessedDomains();
         LOGGER.info("Version info obtained!");
 
-        if(alreadyProcessedDomains.size() > 0) {
+        if (alreadyProcessedDomains.size() > 0) {
             LOGGER.info("Resuming last execution. Execution ID: {} Skipping already processed domains: [{}]",
                     versionInfoHandler.getVersionInfoEntity().getId(), alreadyProcessedDomains.size());
-        }
-        else {
+        } else {
             LOGGER.info("Starting new execution. Execution ID: {}",
                     versionInfoHandler.getVersionInfoEntity().getId());
         }
@@ -82,7 +81,7 @@ public class Dispatcher implements CommandLineRunner {
                 String[] splitLine = line.split(",");
 
                 String domainName = splitLine[1];
-                if(alreadyProcessedDomains.contains(domainName)) {
+                if (alreadyProcessedDomains.contains(domainName)) {
                     LOGGER.debug("Skipping domain: {}", domainName);
                     continue;
                 }
@@ -99,7 +98,7 @@ public class Dispatcher implements CommandLineRunner {
             long tasksExecuted = taskExecutor.getThreadPoolExecutor().getCompletedTaskCount();
             long currentQueueSize = totalTasks - tasksExecuted;
 
-            if(currentQueueSize == 0) {
+            if (currentQueueSize == 0) {
                 break;
             }
 

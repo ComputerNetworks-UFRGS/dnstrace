@@ -17,7 +17,7 @@ public class VersionInfoHandler {
     }
 
     public VersionInfoEntity getVersionInfoEntity() {
-        if(versionInfoEntity == null) {
+        if (versionInfoEntity == null) {
             versionInfoEntity = dnsTracerService.getVersionInfo(nodeId);
         }
 

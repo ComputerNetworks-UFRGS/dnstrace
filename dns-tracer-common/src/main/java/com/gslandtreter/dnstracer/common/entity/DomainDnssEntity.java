@@ -11,16 +11,18 @@ public class DomainDnssEntity {
     private String domain;
     private Integer traceVersion;
     private String nsName;
-
     private Integer position;
     private String nsIp;
-    private String hbtlName;
-    private String hbtlIp;
-    private Integer hbtlAsn;
-    private String hbtlSubnet;
+    private String hopName;
+    private String hopIp;
+    private Integer hopAsn;
+    private String hopSubnet;
     private String nsIpv6;
     private Integer nsAsn;
     private String nsSubnet;
+    private Integer hopPosition;
+    private Integer isHbtl;
+    private Integer isLastHop;
 
     @Id
     @Column(name = "domain")
@@ -63,43 +65,43 @@ public class DomainDnssEntity {
     }
 
     @Basic
-    @Column(name = "hbtl_name")
-    public String getHbtlName() {
-        return hbtlName;
+    @Column(name = "hop_name")
+    public String getHopName() {
+        return hopName;
     }
 
-    public void setHbtlName(String hbtlName) {
-        this.hbtlName = hbtlName;
-    }
-
-    @Basic
-    @Column(name = "hbtl_ip")
-    public String getHbtlIp() {
-        return hbtlIp;
-    }
-
-    public void setHbtlIp(String hbtlIp) {
-        this.hbtlIp = hbtlIp;
+    public void setHopName(String hopName) {
+        this.hopName = hopName;
     }
 
     @Basic
-    @Column(name = "hbtl_asn")
-    public Integer getHbtlAsn() {
-        return hbtlAsn;
+    @Column(name = "hop_ip")
+    public String getHopIp() {
+        return hopIp;
     }
 
-    public void setHbtlAsn(Integer hbtlAsn) {
-        this.hbtlAsn = hbtlAsn;
+    public void setHopIp(String hopIp) {
+        this.hopIp = hopIp;
     }
 
     @Basic
-    @Column(name = "hbtl_subnet")
-    public String getHbtlSubnet() {
-        return hbtlSubnet;
+    @Column(name = "hop_asn")
+    public Integer getHopAsn() {
+        return hopAsn;
     }
 
-    public void setHbtlSubnet(String hbtlSubnet) {
-        this.hbtlSubnet = hbtlSubnet;
+    public void setHopAsn(Integer hopAsn) {
+        this.hopAsn = hopAsn;
+    }
+
+    @Basic
+    @Column(name = "hop_subnet")
+    public String getHopSubnet() {
+        return hopSubnet;
+    }
+
+    public void setHopSubnet(String hopSubnet) {
+        this.hopSubnet = hopSubnet;
     }
 
     @Basic
@@ -132,6 +134,36 @@ public class DomainDnssEntity {
         this.nsSubnet = nsSubnet;
     }
 
+    @Id
+    @Column(name = "hop_position")
+    public Integer getHopPosition() {
+        return hopPosition;
+    }
+
+    public void setHopPosition(Integer hopPosition) {
+        this.hopPosition = hopPosition;
+    }
+
+    @Basic
+    @Column(name = "is_hbtl")
+    public Integer getIsHbtl() {
+        return isHbtl;
+    }
+
+    public void setIsHbtl(Integer isHbtl) {
+        this.isHbtl = isHbtl;
+    }
+
+    @Basic
+    @Column(name = "is_lasthop")
+    public Integer getIsLastHop() {
+        return isLastHop;
+    }
+
+    public void setIsLastHop(Integer isLastHop) {
+        this.isLastHop = isLastHop;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -141,19 +173,22 @@ public class DomainDnssEntity {
                 Objects.equals(position, that.position) &&
                 Objects.equals(nsName, that.nsName) &&
                 Objects.equals(nsIp, that.nsIp) &&
-                Objects.equals(hbtlName, that.hbtlName) &&
-                Objects.equals(hbtlIp, that.hbtlIp) &&
-                Objects.equals(hbtlAsn, that.hbtlAsn) &&
-                Objects.equals(hbtlSubnet, that.hbtlSubnet) &&
+                Objects.equals(hopName, that.hopName) &&
+                Objects.equals(hopIp, that.hopIp) &&
+                Objects.equals(hopAsn, that.hopAsn) &&
+                Objects.equals(hopSubnet, that.hopSubnet) &&
                 Objects.equals(nsIpv6, that.nsIpv6) &&
                 Objects.equals(nsAsn, that.nsAsn) &&
-                Objects.equals(nsSubnet, that.nsSubnet);
+                Objects.equals(nsSubnet, that.nsSubnet) &&
+                Objects.equals(hopPosition, that.hopPosition) &&
+                Objects.equals(isHbtl, that.isHbtl) &&
+                Objects.equals(traceVersion, that.traceVersion) &&
+                Objects.equals(isLastHop, that.isLastHop);
     }
 
     @Override
     public int hashCode() {
-
-        return Objects.hash(domain, position, nsName, nsIp, hbtlName, hbtlIp, hbtlAsn, hbtlSubnet, nsIpv6, nsAsn, nsSubnet);
+        return Objects.hash(domain, position, nsName, nsIp, hopName, hopIp, hopAsn, hopSubnet, nsIpv6, nsAsn, nsSubnet, hopPosition, isHbtl, isLastHop);
     }
 
     @Id

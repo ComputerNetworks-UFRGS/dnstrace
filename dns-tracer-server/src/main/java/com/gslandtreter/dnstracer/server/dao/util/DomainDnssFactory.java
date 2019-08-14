@@ -1,4 +1,4 @@
-package com.gslandtreter.dnstracer.agent.dao.util;
+package com.gslandtreter.dnstracer.server.dao.util;
 
 import com.gslandtreter.dnstracer.common.entity.DomainDnssEntity;
 

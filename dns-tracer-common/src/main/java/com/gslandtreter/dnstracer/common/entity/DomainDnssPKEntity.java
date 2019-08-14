@@ -6,6 +6,7 @@ import java.util.Objects;
 public class DomainDnssPKEntity implements Serializable {
     private String domain;
     private String nsName;
+    private Integer hopPosition;
     private Integer traceVersion;
 
 
@@ -25,6 +26,14 @@ public class DomainDnssPKEntity implements Serializable {
         this.nsName = nsName;
     }
 
+    public Integer getHopPosition() {
+        return hopPosition;
+    }
+
+    public void setHopPosition(Integer hopPosition) {
+        this.hopPosition = hopPosition;
+    }
+
     public Integer getTraceVersion() {
         return traceVersion;
     }
@@ -40,12 +49,12 @@ public class DomainDnssPKEntity implements Serializable {
         DomainDnssPKEntity that = (DomainDnssPKEntity) o;
         return Objects.equals(domain, that.domain) &&
                 Objects.equals(nsName, that.nsName) &&
+                Objects.equals(hopPosition, that.hopPosition) &&
                 Objects.equals(traceVersion, that.traceVersion);
     }
 
     @Override
     public int hashCode() {
-
-        return Objects.hash(domain, nsName, traceVersion);
+        return Objects.hash(domain, nsName, hopPosition, traceVersion);
     }
 }
